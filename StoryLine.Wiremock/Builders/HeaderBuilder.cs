@@ -16,27 +16,39 @@ namespace StoryLine.Wiremock.Builders
             _key = key;
         }
 
-        public RequestBuilder Containing(string value)
+        public RequestBuilder Contains(string value)
         {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+
             return AddToHeader(_key, "contains", value);
         }
 
-        public RequestBuilder EqualTo(string value)
+        public RequestBuilder EqualsTo(string value)
         {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+
             return AddToHeader(_key, "equalTo", value);
         }
 
-        public RequestBuilder Matching(string pattern)
+        public RequestBuilder Matches(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddToHeader(_key, "matches", pattern);
         }
 
-        public RequestBuilder NotMatching(string pattern)
+        public RequestBuilder NotMatches(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddToHeader(_key, "doesNotMatch", pattern);
         }
 
-        internal RequestBuilder AddToHeader(string key, string comparer, string value)
+        private RequestBuilder AddToHeader(string key, string comparer, string value)
         {
             if (!State.RequestState.Headers.ContainsKey(key))
                 State.RequestState.Headers.Add(key, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase));

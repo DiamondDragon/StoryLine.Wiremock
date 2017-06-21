@@ -5,11 +5,11 @@ using StoryLine.Wiremock.Builders;
 
 namespace StoryLine.Wiremock.Expectations
 {
-    public class StubRequestExpectation : IExpectation
+    public class HttpRequestStubExpectation : IExpectation
     {
         private readonly IApiStubState _state;
 
-        public StubRequestExpectation(IApiStubState state)
+        public HttpRequestStubExpectation(IApiStubState state)
         {
             _state = state ?? throw new ArgumentNullException(nameof(state));
         }

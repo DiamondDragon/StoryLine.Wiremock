@@ -16,27 +16,39 @@ namespace StoryLine.Wiremock.Builders
             _key = key;
         }
 
-        public RequestBuilder Containing(string pattern)
+        public RequestBuilder Contains(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddToQueryParameters(_key, "contains", pattern);
         }
 
-        public RequestBuilder EqualTo(string pattern)
+        public RequestBuilder EqualsTo(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddToQueryParameters(_key, "equalTo", pattern);
         }
 
-        public RequestBuilder Matching(string pattern)
+        public RequestBuilder Matches(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddToQueryParameters(_key, "matches", pattern);
         }
 
-        public RequestBuilder NotMatching(string pattern)
+        public RequestBuilder NotMatches(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddToQueryParameters(_key, "doesNotMatch", pattern);
         }
 
-        internal RequestBuilder AddToQueryParameters(string key, string comparer, string value)
+        private RequestBuilder AddToQueryParameters(string key, string comparer, string value)
         {
             if (!State.RequestState.QueryParameters.ContainsKey(key))
                 State.RequestState.QueryParameters.Add(key, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase));

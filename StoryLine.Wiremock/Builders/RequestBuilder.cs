@@ -71,7 +71,7 @@ namespace StoryLine.Wiremock.Builders
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
 
             var builder = new HeaderBuilder(State, key);
-            return builder.EqualTo(value);
+            return builder.EqualsTo(value);
         }
 
         public BodyBuilder Body()
@@ -96,7 +96,7 @@ namespace StoryLine.Wiremock.Builders
         public RequestBuilder QueryParam(string key, string value)
         {
             var builder = new QueryParamBuilder(State, key);
-            return builder.EqualTo(value);
+            return builder.EqualsTo(value);
         }
     }
 }
