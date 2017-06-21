@@ -10,7 +10,7 @@ namespace StoryLine.Wiremock.Builders
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
             if (content == null)
-                return builder.Body("{}");
+                throw new ArgumentNullException(nameof(content));
 
             return JsonObjectBody(builder, content, Config.DefaultJsonSerializerSettings);
         }
@@ -20,7 +20,7 @@ namespace StoryLine.Wiremock.Builders
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
             if (content == null)
-                return builder.Body("{}");
+                throw new ArgumentNullException(nameof(content));
             if (settings == null)
                 throw new ArgumentNullException(nameof(settings));
 

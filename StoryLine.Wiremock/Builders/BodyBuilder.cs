@@ -13,21 +13,33 @@ namespace StoryLine.Wiremock.Builders
 
         public RequestBuilder Containing(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddBody("contains", pattern);
         }
 
         public RequestBuilder EqualTo(string value)
         {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+
             return AddBody("equalTo", value);
         }
 
         public RequestBuilder Matching(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddBody("matches", pattern);
         }
 
         public RequestBuilder NotMatching(string pattern)
         {
+            if (pattern == null)
+                throw new ArgumentNullException(nameof(pattern));
+
             return AddBody("doesNotMatch", pattern);
         }
 
@@ -105,7 +117,7 @@ namespace StoryLine.Wiremock.Builders
             });
         }
 
-        internal RequestBuilder AddBody(string comparer, object value)
+        private RequestBuilder AddBody(string comparer, object value)
         {
             State.RequestState.BodyPatterns.Add(new KeyValuePair<string, object>(comparer, value));
             return new RequestBuilder(State);

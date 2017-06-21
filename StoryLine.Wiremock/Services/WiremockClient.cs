@@ -37,6 +37,9 @@ namespace StoryLine.Wiremock.Services
 
         public void Reset(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
+
             _restClient.Delete(ToAbsoluteUrl("/__admin/mappings/" + id));
         }
 
