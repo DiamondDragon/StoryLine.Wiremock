@@ -3,7 +3,7 @@ using StoryLine.Wiremock.Builders;
 
 namespace StoryLine.Wiremock.Expectations
 {
-    public class StubRequest : IExpectationBuilder
+    public class HttpRequestStub : IExpectationBuilder
     {
         private readonly IApiStubState _state = new ApiStubState();
 
@@ -14,7 +14,7 @@ namespace StoryLine.Wiremock.Expectations
 
         IExpectation IExpectationBuilder.Build()
         {
-            return new StubRequestExpectation(_state);
+            return new HttpRequestStubExpectation(_state);
         }
     }
 }
