@@ -8,7 +8,7 @@
     <Copyright>Andrei Salanoi &lt;diamond_dragon@tut.by&gt;</Copyright>
     <PackageProjectUrl>https://github.com/DiamondDragon/StoryLine.Wiremock</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DiamondDragon/StoryLine.Wiremock</RepositoryUrl>
-    <PackageTags>test testing tdd framework fluent assert core .netcore netcore microservice</PackageTags>
+    <PackageTags>test testing tdd framework fluent assert core .netcore netcore microservice wiremock</PackageTags>
     <Description>Library contains set of actions and assertions used to configure Wiremock application.</Description> 
   </PropertyGroup>
 
