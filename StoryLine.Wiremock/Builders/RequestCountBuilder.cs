@@ -3,40 +3,40 @@ using StoryLine.Wiremock.Services;
 
 namespace StoryLine.Wiremock.Builders
 {
-    public class ReceivedCountBuilder
+    public class RequestCountBuilder
     {
         private readonly IApiStubState _state;
 
-        public ReceivedCountBuilder(IApiStubState state)
+        public RequestCountBuilder(IApiStubState state)
         {
             _state = state ?? throw new ArgumentNullException(nameof(state));
         }
 
-        public ReceivedCountBuilder Never()
+        public RequestCountBuilder Never()
         {
             return SetRequestCount(count => count == 0, "never");
         }
-        public ReceivedCountBuilder Once()
+        public RequestCountBuilder Once()
         {
             return SetRequestCount(count => count == 1, "once");
         }
 
-        public ReceivedCountBuilder Twice()
+        public RequestCountBuilder Twice()
         {
             return SetRequestCount(count => count == 2, "twice");
         }
 
-        public ReceivedCountBuilder AtLeastOnce()
+        public RequestCountBuilder AtLeastOnce()
         {
             return SetRequestCount(count => count >= 1, "at least once");
         }
 
-        public ReceivedCountBuilder MoreThanOnce()
+        public RequestCountBuilder MoreThanOnce()
         {
             return SetRequestCount(count => count > 1, "more than once");
         }
 
-        public ReceivedCountBuilder Exactly(int number)
+        public RequestCountBuilder Exactly(int number)
         {
             if (number <= 0)
                 throw new ArgumentOutOfRangeException(nameof(number));
@@ -44,7 +44,7 @@ namespace StoryLine.Wiremock.Builders
             return SetRequestCount(count => count == number, string.Format("{0} times", number));
         }
 
-        private ReceivedCountBuilder SetRequestCount(Predicate<int> predicate, string description)
+        private RequestCountBuilder SetRequestCount(Predicate<int> predicate, string description)
         {
             _state.RequestCount = new Times(predicate, description);
 

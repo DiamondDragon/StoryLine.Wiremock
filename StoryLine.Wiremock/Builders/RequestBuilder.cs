@@ -50,9 +50,9 @@ namespace StoryLine.Wiremock.Builders
             return new ResponseBuilder(State);
         }
 
-        public ReceivedCountBuilder Received()
+        public RequestCountBuilder Called()
         {
-            return new ReceivedCountBuilder(State);
+            return new RequestCountBuilder(State);
         }
 
         public HeaderBuilder Header(string key)
