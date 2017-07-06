@@ -5,11 +5,11 @@ using StoryLine.Wiremock.Services.Contracts;
 
 namespace StoryLine.Wiremock.Actions
 {
-    public class HttpResponseStubAction : IAction
+    public class MockHttpRequestAction : IAction
     {
         private readonly IApiStubState _state;
 
-        public HttpResponseStubAction(IApiStubState state)
+        public MockHttpRequestAction(IApiStubState state)
         {
             _state = state ?? throw new ArgumentNullException(nameof(state));
         }

@@ -3,13 +3,13 @@ using StoryLine.Wiremock.Builders;
 
 namespace StoryLine.Wiremock.Actions
 {
-    public class HttpResponseStub : IActionBuilder
+    public class MockHttpRequest : IActionBuilder
     {
         private readonly IApiStubState _apiStubState = new ApiStubState();
 
         IAction IActionBuilder.Build()
         {
-            return new HttpResponseStubAction(_apiStubState);
+            return new MockHttpRequestAction(_apiStubState);
         }
 
         public RequestBuilder Request()

@@ -1,4 +1,5 @@
 ﻿using StoryLine.Wiremock.Actions;
+using StoryLine.Wiremock.Expectations;
 using Xunit;
 
 namespace StoryLine.Wiremock.Tests
@@ -12,14 +13,21 @@ namespace StoryLine.Wiremock.Tests
 
             Scenario.New()
                 .When()
-                    .Performs<HttpResponseStub>(x => x
+                    .Performs<MockHttpRequest>(x => x
                         .Request()
                             .Path()
                                 .EqualsTo("/xxx")
                             .Method("GET")
                         .Response()
                             .Status(200)
-                            .Body("Text"))
+                            .Body("Text")
+                        )
+                .Then()
+                    .Expects<HttpRequestMock>(x => x
+                        .Request()
+                            .Path(p => p.EqualsTo("/dragon"))
+                        .Called()
+                            .AtLeastOnce())
                 .Run();
 
 
