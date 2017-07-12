@@ -45,15 +45,6 @@ namespace StoryLine.Wiremock.Builders
             return path(new PathBuilder(State));
         }
 
-        public ResponseBuilder Response()
-        {
-            return new ResponseBuilder(State);
-        }
-
-        public RequestCountBuilder Called()
-        {
-            return new RequestCountBuilder(State);
-        }
 
         public HeaderBuilder Header(string key)
         {
