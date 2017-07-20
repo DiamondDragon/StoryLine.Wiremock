@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using StoryLine.Wiremock.Services;
-using StoryLine.Wiremock.Services.Helpers;
 
 namespace StoryLine.Wiremock
 {

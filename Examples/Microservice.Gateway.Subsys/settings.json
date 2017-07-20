@@ -1,0 +1,4 @@
+﻿{
+  "WireMockAddress": "http://localhost:7000",
+  "ServiceAddress": "http://localhost:5000"
+}

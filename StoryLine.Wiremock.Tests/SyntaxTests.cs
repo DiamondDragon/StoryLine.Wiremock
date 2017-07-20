@@ -1,6 +1,5 @@
 ﻿using StoryLine.Wiremock.Actions;
 using StoryLine.Wiremock.Expectations;
-using Xunit;
 
 namespace StoryLine.Wiremock.Tests
 {
