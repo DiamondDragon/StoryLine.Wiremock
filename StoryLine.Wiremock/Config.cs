@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using StoryLine.Wiremock.Services;
 using StoryLine.Wiremock.Services.Helpers;
 
@@ -12,7 +13,7 @@ namespace StoryLine.Wiremock
         private static IWiremockClient _wiremockClient = new WiremockClient(WiremockConfig, RestClient);
         private static JsonSerializerSettings _defaultJsonSerializerSettings = new JsonSerializerSettings
         {
-            ContractResolver = new CamelCaseExceptDictionaryKeysResolver(),
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
             NullValueHandling = NullValueHandling.Ignore
         };
 

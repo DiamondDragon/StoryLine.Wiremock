@@ -56,20 +56,15 @@ namespace StoryLine.Wiremock.Builders
             });
         }
 
-        public RequestBuilder EqualToJsonBody(object body, bool ignoreArrayOrder = true, bool ignoreExtraElements = true)
+        public RequestBuilder EqualToJsonObjectBody(object body, bool ignoreArrayOrder = true, bool ignoreExtraElements = true)
         {
             if (body == null)
                 throw new ArgumentNullException(nameof(body));
 
-            return EqualToJsonBody(body, new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore
-            },
-            ignoreArrayOrder, 
-            ignoreExtraElements);
+            return EqualToJsonObjectBody(body, Config.DefaultJsonSerializerSettings, ignoreArrayOrder, ignoreExtraElements);
         }
 
-        public RequestBuilder EqualToJsonBody(object body, JsonSerializerSettings settings, bool ignoreArrayOrder = true, bool ignoreExtraElements = true)
+        public RequestBuilder EqualToJsonObjectBody(object body, JsonSerializerSettings settings, bool ignoreArrayOrder = true, bool ignoreExtraElements = true)
         {
             if (body == null)
                 throw new ArgumentNullException(nameof(body));

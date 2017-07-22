@@ -2,20 +2,12 @@
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using StoryLine.Exceptions;
 
 namespace StoryLine.Wiremock.Services
 {
     public class RestClient : IRestClient
     {
-        private static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MissingMemberHandling = MissingMemberHandling.Ignore,
-            NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver()
-        };
-
         public void PostJson(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
@@ -86,12 +78,12 @@ namespace StoryLine.Wiremock.Services
 
         private static T GetObject<T>(string content)
         {
-            return string.IsNullOrEmpty(content) ? default(T) : JsonConvert.DeserializeObject<T>(content, Settings);
+            return string.IsNullOrEmpty(content) ? default(T) : JsonConvert.DeserializeObject<T>(content, Config.DefaultJsonSerializerSettings);
         }
 
         private static string GetJson(object body)
         {
-            return body == null ? string.Empty : JsonConvert.SerializeObject(body, Settings);
+            return body == null ? string.Empty : JsonConvert.SerializeObject(body, Config.DefaultJsonSerializerSettings);
         }
     }
 }
