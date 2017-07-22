@@ -1,0 +1,1 @@
+docker run -p 7000:8080 rodolpheche/wiremock
