@@ -19,30 +19,32 @@ namespace StoryLine.Wiremock.Builders
             return this;
         }
 
-        public UrlBuilder Url()
+        public RequestBuilder Url(string url)
         {
-            return new UrlBuilder(State);
+            State.RequestState.Url = url ?? throw new ArgumentNullException(nameof(url));
+
+            return this;
         }
 
-        public RequestBuilder Url(Func<UrlBuilder, RequestBuilder> url)
+        public RequestBuilder UrlPattern(string urlPattern)
         {
-            if (url == null)
-                throw new ArgumentNullException(nameof(url));
+            State.RequestState.UrlPattern = urlPattern ?? throw new ArgumentNullException(nameof(urlPattern));
 
-            return url(new UrlBuilder(State));
+            return this;
         }
 
-        public PathBuilder Path()
+        public RequestBuilder UrlPath(string path)
         {
-            return new PathBuilder(State);
+            State.RequestState.UrlPath = path ?? throw new ArgumentNullException(nameof(path));
+
+            return this;
         }
 
-        public RequestBuilder Path(Func<PathBuilder, RequestBuilder> path)
+        public RequestBuilder UrlPathPattern(string urlPathPattern)
         {
-            if (path == null)
-                throw new ArgumentNullException(nameof(path));
+            State.RequestState.UrlPathPattern = urlPathPattern ?? throw new ArgumentNullException(nameof(urlPathPattern));
 
-            return path(new PathBuilder(State));
+            return this;
         }
 
 

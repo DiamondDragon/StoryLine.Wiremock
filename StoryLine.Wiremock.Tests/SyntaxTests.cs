@@ -14,16 +14,15 @@ namespace StoryLine.Wiremock.Tests
                 .When()
                     .Performs<MockHttpRequest>(x => x
                         .Request(req => req
-                            .Path()
-                                .EqualsTo("/xxx")
-                                .Method("GET"))
+                            .Url("/xxx")
+                            .Method("GET"))
                         .Response(res => res
                             .Status(200)
                             .Body("Text")))
                 .Then()
                     .Expects<HttpRequestMock>(x => x
                         .Request(req => req
-                            .Path(p => p.EqualsTo("/dragon")))
+                            .Url("/dragon"))
                         .Called(c => c.AtLeastOnce()))
                 .Run();
 

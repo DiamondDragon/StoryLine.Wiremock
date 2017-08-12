@@ -6,7 +6,7 @@ namespace StoryLine.Wiremock.Actions
 {
     public class MockHttpRequest : IActionBuilder
     {
-        private Action<RequestBuilder> _requestConfig = req => req.Method("GET").Path(x => x.EqualsTo("/"));
+        private Action<RequestBuilder> _requestConfig = req => req.Method("GET").UrlPath("/");
         private Action<ResponseBuilder> _responseConfig = res => res.Body("Ok").Status(200);
 
         IAction IActionBuilder.Build()
