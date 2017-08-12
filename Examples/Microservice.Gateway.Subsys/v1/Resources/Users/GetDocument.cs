@@ -32,7 +32,7 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("GET")
-                        .Url(p => p.EqualsTo(Config.ToDocumentServiceUrl($"/v2/documents/{DocumentId}"))))
+                        .Url(Config.ToDocumentServiceUrl($"/v2/documents/{DocumentId}")))
                     .Response(res => res
                         .Status(404)))
                 .When()
@@ -52,7 +52,7 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("GET")
-                        .Url(p => p.EqualsTo(Config.ToDocumentServiceUrl($"/v2/documents/{DocumentId}"))))
+                        .Url(Config.ToDocumentServiceUrl($"/v2/documents/{DocumentId}")))
                     .Response(res => res
                         .Status(200)
                         .JsonObjectBody(_document)))

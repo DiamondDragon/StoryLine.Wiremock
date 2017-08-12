@@ -21,7 +21,7 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                     .HasPerformed<MockHttpRequest>(x => x
                         .Request(req => req
                             .Method("GET")
-                            .Url(p => p.EqualsTo(Config.ToUserServiceUrl($"/users/{UserId}"))))
+                            .Url(Config.ToUserServiceUrl($"/users/{UserId}")))
                         .Response(res => res
                             .Status(404)))
                 .When()
@@ -41,7 +41,7 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                     .HasPerformed<MockHttpRequest>(x => x
                         .Request(req => req
                             .Method("GET")
-                            .Url(p => p.EqualsTo(Config.ToUserServiceUrl($"/users/{UserId}"))))
+                            .Url(Config.ToUserServiceUrl($"/users/{UserId}")))
                         .Response(res => res
                             .Status(200)
                             .JsonObjectBody(new User

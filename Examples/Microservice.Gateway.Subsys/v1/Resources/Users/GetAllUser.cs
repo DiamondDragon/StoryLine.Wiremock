@@ -45,9 +45,9 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("GET")
-                        .Path(p => p.EqualsTo(Config.ToUserServiceUrl("/users"))
+                        .UrlPath(Config.ToUserServiceUrl("/users"))
                             .QueryParam("skip", "10")
-                            .QueryParam("take", "15")))
+                            .QueryParam("take", "15"))
                     .Response(res => res
                         .Status(200)
                         .JsonObjectBody(_users)))
@@ -70,9 +70,9 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("GET")
-                        .Path(p => p.EqualsTo(Config.ToUserServiceUrl("/users"))
+                        .UrlPath(Config.ToUserServiceUrl("/users"))
                         .QueryParam("skip", "0")
-                        .QueryParam("take", "25")))
+                        .QueryParam("take", "25"))
                     .Response(res => res
                         .Status(200)
                         .JsonObjectBody(_users)))

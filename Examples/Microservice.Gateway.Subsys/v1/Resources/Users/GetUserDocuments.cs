@@ -42,10 +42,10 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("GET")
-                        .Path(p => p.EqualsTo(Config.ToDocumentServiceUrl("/v2/documents"))
+                        .UrlPath(Config.ToDocumentServiceUrl("/v2/documents"))
                             .QueryParam("skip", "10")
                             .QueryParam("take", "15")
-                            .QueryParam("user", UserId)))
+                            .QueryParam("user", UserId))
                     .Response(res => res
                         .Status(200)
                         .JsonObjectBody(_documents)))
@@ -68,10 +68,10 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("GET")
-                        .Path(p => p.EqualsTo(Config.ToDocumentServiceUrl("/v2/documents"))
+                        .UrlPath(Config.ToDocumentServiceUrl("/v2/documents"))
                             .QueryParam("skip", "0")
                             .QueryParam("take", "25")
-                            .QueryParam("user", UserId)))
+                            .QueryParam("user", UserId))
                     .Response(res => res
                         .Status(200)
                         .JsonObjectBody(_documents)))

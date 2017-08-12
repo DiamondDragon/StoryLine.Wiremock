@@ -41,7 +41,7 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .HasPerformed<MockHttpRequest>(x => x
                     .Request(req => req
                         .Method("POST")
-                        .Path(p => p.EqualsTo(Config.ToUserServiceUrl("/users")))
+                        .UrlPath(Config.ToUserServiceUrl("/users"))
                         .Body()
                         .EqualToJsonObjectBody(_request, false))
                     .Response(res => res
@@ -56,8 +56,7 @@ namespace Microservice.Gateway.Subsys.v1.Resources.Users
                 .Then()
                 .Expects<HttpResponse>(x => x
                     .Status(201)
-                    .Header("Location")
-                        .Contains("v1/users/")
+                    .Header("Location", p => p.Contains("v1/users/"))
                     .JsonBody()
                         .MatchesObject(_response))
                 .Run();
