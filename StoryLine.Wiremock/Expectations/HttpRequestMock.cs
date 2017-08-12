@@ -6,7 +6,7 @@ namespace StoryLine.Wiremock.Expectations
 {
     public class HttpRequestMock : IExpectationBuilder
     {
-        private Action<RequestBuilder> _requestConfig = req => req.Method("GET").Path(x => x.EqualsTo("/"));
+        private Action<RequestBuilder> _requestConfig = req => req.Method("GET").UrlPath("/");
         private Action<RequestCountBuilder> _requestCountConfig = c => c.AtLeastOnce();
 
         public HttpRequestMock Request(Action<RequestBuilder> requestConfig)
