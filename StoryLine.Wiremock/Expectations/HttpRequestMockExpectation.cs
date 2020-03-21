@@ -17,7 +17,7 @@ namespace StoryLine.Wiremock.Expectations
             int retryCount, 
             TimeSpan retryInterval)
         {
-            if (retryCount <= 0) throw new ArgumentOutOfRangeException(nameof(retryCount));
+            if (retryCount < 0) throw new ArgumentOutOfRangeException(nameof(retryCount));
 
             _state = state ?? throw new ArgumentNullException(nameof(state));
             _retryCount = retryCount;

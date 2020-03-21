@@ -25,9 +25,9 @@ namespace StoryLine.Wiremock.Expectations
             return this;
         }
 
-        public HttpRequestMock WithRetries(int retryCount)
+        public HttpRequestMock Retries(int retryCount)
         {
-            if (retryCount <= 0) 
+            if (retryCount < 0) 
                 throw new ArgumentOutOfRangeException(nameof(retryCount));
 
             _retryCount = retryCount;
@@ -35,7 +35,7 @@ namespace StoryLine.Wiremock.Expectations
             return this;
         }
 
-        public HttpRequestMock WithRetryInterval(TimeSpan interval)
+        public HttpRequestMock RetryInterval(TimeSpan interval)
         {
             _retryInterval = interval;
 
