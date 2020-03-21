@@ -8,6 +8,8 @@ namespace StoryLine.Wiremock.Expectations
     {
         private Action<RequestBuilder> _requestConfig = req => req.Method("GET").UrlPath("/");
         private Action<RequestCountBuilder> _requestCountConfig = c => c.AtLeastOnce();
+        private int _retryCount;
+        private TimeSpan _retryInterval = TimeSpan.FromMilliseconds(100);
 
         public HttpRequestMock Request(Action<RequestBuilder> requestConfig)
         {
@@ -23,6 +25,23 @@ namespace StoryLine.Wiremock.Expectations
             return this;
         }
 
+        public HttpRequestMock Retries(int retryCount)
+        {
+            if (retryCount < 0) 
+                throw new ArgumentOutOfRangeException(nameof(retryCount));
+
+            _retryCount = retryCount;
+
+            return this;
+        }
+
+        public HttpRequestMock RetryInterval(TimeSpan interval)
+        {
+            _retryInterval = interval;
+
+            return this;
+        }
+
         IExpectation IExpectationBuilder.Build()
         {
             var state = new ApiStubState();
@@ -32,7 +51,11 @@ namespace StoryLine.Wiremock.Expectations
             var requestCountBuilder = new RequestCountBuilder(state);
             _requestCountConfig(requestCountBuilder);
 
-            return new HttpRequestMockExpectation(state);
+            return new HttpRequestMockExpectation(
+                state,
+                _retryCount,
+                _retryInterval
+                );
         }
     }
 }
